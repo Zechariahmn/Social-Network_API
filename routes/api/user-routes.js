@@ -12,3 +12,9 @@ const {
 
 //GET all and POST users
 router.route('/').get(getUser).post(createUser);
+
+//GET one user, PUT and DELETE by user's ID
+router.route('/:userId')
+.get(getSingleUser)
+.put(updateUser)
+.delete(deleteUser);
