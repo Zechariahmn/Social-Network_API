@@ -1,15 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+//port needed for api application to work
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+//middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use(require('./routes'));
 
+//mongodb connection to the application
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-network', {
   useFindAndModify: false,
   useNewUrlParser: true,
@@ -19,4 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-network'
 // Use this to log mongo queries being executed!
 mongoose.set('debug', true);
 
-app.listen(PORT, () => console.log(`🌍 Connected on localhost:${PORT}`));
+//listening to port
+app.listen(PORT, () =>
+console.log(`App listening at http://localhost:${PORT} 🚀`)
+);
