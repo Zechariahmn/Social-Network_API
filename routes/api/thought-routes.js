@@ -11,3 +11,9 @@ const {
 
 //GET all and POST thought
 router.route('/').get(getThought).post(createThought);
+
+//GET one thought, PUT and DELETE by id
+router.route('/:thoughtId')
+.get(getSingleThought)
+.put(updateThought)
+.delete(deleteThought);
