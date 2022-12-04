@@ -1,5 +1,5 @@
 const { Schema, model, Types } = require('mongoose');
-const moment = require('moment');
+const { formatDate } = require('../utils/helpers');
 
 // reaction schema only
 const ReactionSchema = new Schema(
@@ -56,9 +56,10 @@ const ReactionSchema = new Schema(
         createdAt: {
             type: Date,
             default: Date.now,
-            get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+            get: (date) => {
+              return formatDate(date)
         },
-
+      },
         //username field
         username: {
             type: String,
@@ -69,8 +70,8 @@ const ReactionSchema = new Schema(
         //// array of nested documents created with the reactionSchema
         reactions: [ReactionSchema],
     },
-
     {
+    
       toJSON: {
         virtuals: true,
         getters: true
