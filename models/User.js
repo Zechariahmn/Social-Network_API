@@ -20,3 +20,12 @@ const userSchema = new Schema(
         trim: true,
         match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please enter a valid email address']
       },
+
+     // includes an array of _id values referencing the Thought model
+      thoughts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Thought'
+        }
+      ],
+
