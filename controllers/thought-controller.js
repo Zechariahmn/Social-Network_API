@@ -109,22 +109,23 @@ deleteThought({ params }, res) {
     })
     
     .catch(err => res.json(err));
-},
-
- // the removeReaction method deletes a thought by using the id of the thought and the reaction
- removeReaction({ params }, res) {
-    
-    Thought.findOneAndUpdate(
-      { _id: params.id },
-      { $pull: { reactions: { reactionId: params.reactionId } } },
-      { new: true }
-    )
-      
-    .then((dbThoughtData) => res.json(dbThoughtData))
-      
-    .catch((err) => res.json(err));
   },
+
+//delete Reaction
+removeReaction({ params }, res) {
+    Thought.findOneAndUpdate(
+        { _id: params.thoughtId },
+        { $pull: { reactions: { reactionId: params.reactionId } } },
+        { new: true }
+    )
+    
+    .then(dbThoughtData => res.json(dbThoughtData))
+    
+    .catch(err => res.json(err));
+ },
 };
+
+
 
 // exports the thoughtController
 module.exports = thoughtController;
