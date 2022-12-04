@@ -92,3 +92,21 @@ deleteThought({ params }, res) {
             
             .catch((err) => res.status(400).json(err));
   },
+
+  //update a thought by Id
+  updateThought({ params, body }, res) {
+    Thought.findOneAndUpdate(
+        { _id: params.id }, 
+        body,
+        { new: true, runValidators: true }
+    )
+    
+    .then(updatedThought => {
+        if (!updatedThought) {
+            return res.status(404).json({ message: 'No thought with this ID!' });
+        }
+    res.json(updatedThought);
+    })
+    
+    .catch(err => res.json(err));
+},
