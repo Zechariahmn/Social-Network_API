@@ -9,4 +9,10 @@ const ReactionSchema = new Schema(
         default: () => new Types.ObjectId()
       },
 
-      
+      reactionBody: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 1,
+        maxlength: 280
+      },
