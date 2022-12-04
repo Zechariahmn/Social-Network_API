@@ -56,3 +56,14 @@ const ReactionSchema = new Schema(
             ref: 'User'
         },
 
+        reactions: [ReactionSchema],
+    },
+    {
+      toJSON: {
+        virtuals: true,
+        getters: true
+      },
+      id: false
+  }
+)
+
