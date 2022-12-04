@@ -11,6 +11,8 @@ app.use(express.json());
 app.use(routes);
 
 //listening to port
-app.listen(PORT, () =>
-console.log(`App listening at http://localhost:${PORT} 🚀`)
-);
+db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT} at http://localhost:${PORT} !`);
+    });
+  });
