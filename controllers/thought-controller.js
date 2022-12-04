@@ -5,24 +5,56 @@ const thoughtController = {
     // the get All Thoughts method gets all thoughts shared by users
     getAllThoughts(req, res) {
       Thought.find({})
-        .populate({ path: "reactions", select: "-__v" })
-        .select("-__v")
-        .then((dbThoughtData) => res.json(dbThoughtData))
-        .catch((err) => res.status(500).json(err));
+        
+      .populate({ path: "reactions", select: "-__v" })
+        
+      .select("-__v")
+        
+      .then((dbThoughtData) => res.json(dbThoughtData))
+        
+      .catch((err) => res.status(500).json(err));
     },
 
     //get one thought by ID
     getThoughtById({ params }, res) {
         Thought.findOne({ _id: params.id })
-            .populate({
+            
+        .populate({
                 path: 'user',
                 select: '-__v'
             })
-           .select('-__v')
-           .sort({ _id: -1 })
-           .then(dbThoughtData => res.json(dbThoughtData))
-           .catch(err => {
+           
+            .select('-__v')
+           
+            .sort({ _id: -1 })
+           
+            .then(dbThoughtData => res.json(dbThoughtData))
+           
+            .catch(err => {
                console.log(err);
                res.status(500).json(err)
            })
     },
+
+// creates a new thought for a specific user, using the createThought method
+  createThought({ params, body }, res) {
+    Thought.create(body)
+      
+    .then((dbThoughtData) => {
+        return User.findOneAndUpdate(
+          { _id: body.userId },
+          { $push: { thoughts: dbThoughtData._id } },
+          { new: true }
+        );
+      })
+      
+      .then((dbUserData) => {
+        if (!dbUserData) {
+          res.status(404).json({ message: "No user was found with this id." });
+          return;
+        }
+        res.json({ message: "The thought was successfully created!" });
+      })
+      
+      .catch((err) => res.json(err));
+  },
