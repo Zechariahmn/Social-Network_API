@@ -50,3 +50,9 @@ const ReactionSchema = new Schema(
             get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
         },
 
+        username: {
+            type: String,
+            required: true,
+            ref: 'User'
+        },
+
