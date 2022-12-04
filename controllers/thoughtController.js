@@ -3,7 +3,7 @@ const { Thought, User } = require('../models');
 const thoughtController = {
 
     // the get All Thoughts method gets all thoughts shared by users
-    getAllThoughts(req, res) {
+    getThought(req, res) {
       Thought.find({})
         
       .populate({ path: "reactions", select: "-__v" })
