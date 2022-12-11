@@ -96,7 +96,7 @@ module.exports = {
       
     .then((thought) =>
         !thought
-          ? res.status(404).json({ message: "No thought frind with ID!" })
+          ? res.status(404).json({ message: "No thought found with ID!" })
           : res.json(thought)
       )
       
