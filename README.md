@@ -17,6 +17,12 @@ To install necessary dependencies, run the following command:
 ```npm i```
 
 ## Usage
+https://drive.google.com/file/d/140V1K90AJ56mLubBBAMKYYmKaLEFKN8k/view?usp=sharing
+https://drive.google.com/file/d/1Cn07MuYiTY4zc0ifEjFsQa9rH6vA3sNh/view?usp=sharing
+https://drive.google.com/file/d/15R4Mpd3FwPXw20ZcHQLeTQoMn_Y2wIQ3/view?usp=sharing
+https://drive.google.com/file/d/1DC4zZdO0_4V8S18d_Jr7Xt9S5s2apKQy/view?usp=sharing
+https://drive.google.com/file/d/1JgaDA0h_h1Xnx1XawPm9gIhCwKzV6NIH/view?usp=sharing
+
 In order for users to use this repo they must first clone it down so that they have the necessary dependencies for the application to functio properly. The user can then open insomnia and test the ```DELETE```, ```PUT```, ```GET FIND ALL```, ```GET FIND BY ID``` and ```POST``` API routes for users and thoughts. Users can also test the ```DELETE``` and ```POST``` API routes for reactions and friends. 
 
 ## License
